@@ -7,6 +7,35 @@ namespace Lab_2
     {
         static void Main(string[] args)
         {
+            //---- Локальная функция ----------
+            (int max, int min, int sym, char Al) Func(int[] mss, string StRR)
+            {
+                var tuplee = (max: mss[0], min: mss[0], sym: 0, Al: ' ');
+                for (int l = 0; l < mss.Length; l++)
+                {
+                    if (mss[l] > tuplee.max)
+                    {
+                        tuplee.max = mss[l];
+                    }
+                    if (mss[l] < tuplee.min)
+                    {
+                        tuplee.min = mss[l];
+                    }
+                    tuplee.sym += mss[l];
+
+                }
+                for (int h = 0; h < StRR.Length; h++)
+                {
+                    if (StRR[h] != ' ')
+                    {
+                        tuplee.Al = StRR[h];
+                        break;
+                    }
+
+                }
+                return tuplee;
+            }
+            //------------------------
             sbyte sbyteA = -1;
             short shortA = -2;
             int intA = -3;
@@ -142,33 +171,6 @@ namespace Lab_2
             var tuple = Func(ms, StR);
             Console.WriteLine(tuple);
             Console.Read();
-        }
-        private static (int max, int min, int sym, char Al) Func(int[] ms, string StR)
-        {
-            var tuple = (max: ms[0], min: ms[0], sym:0, Al:' ');
-            for(int l=0; l<ms.Length;l++)
-            {
-                if(ms[l]>tuple.max)
-                {
-                    tuple.max = ms[l];
-                }
-                if (ms[l] < tuple.min)
-                {
-                    tuple.min = ms[l];
-                }
-                tuple.sym += ms[l];
-    
-            }
-            for(int h=0; h<StR.Length; h++)
-            {
-                if (StR[h] != ' ')
-                {
-                    tuple.Al = StR[h];
-                    break;
-                }
-
-            }
-            return tuple;
         }
     }
 }
